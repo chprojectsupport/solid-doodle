@@ -1,0 +1,50 @@
+Javascript
+//How to add an Accordion View to Knack
+// Start in the builder by adding a Rich Text View (to hold the button) above the view you want to show/hide and note the view number so we can find it later in jquery
+// Change this scene to page scene number you are targeting
+$(document).on('knack-scene-render.scene_25', function (event, scene) {
+var myRichTextView = '#view_156' ; // Just replace this view # with the view number of your richtext view
+var myViewToShowHide = '#view_60'; // Just replace this view # with the view number you want to show/hide (accordion)
+   $(myViewToShowHide).toggle(false);   // Load page with accordion closed
+     $(myRichTextView).html('<button class="accordion" id = myMagicButton> Pet Details </button>');
+      $("button#myMagicButton").on("click", function() {
+        $(myViewToShowHide).toggle("slow");
+        });
+});
+
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+
+CSS
+/*========== Accordion Form Collapsible View =======   */
+.accordionForm {
+  cursor: pointer;
+  padding: 10px;
+  float:left;
+  width:100%;
+  border: 10px;
+  text-align: right;
+  outline: none;
+  font-size: 16px;
+  background-color: #F8F9F8;
+  transition: .4s;
+}
+.active, .accordion:hover {
+  background-color: DarkSeaGreen;
+}
+.accordion:after {
+  font-family: FontAwesome;
+  content: “\f065”;
+  /*content: ‘\271A’; */
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+.active:after {
+  content: "\f077";
+}
+/*=====END ===== Accordion Form Collapsible View =====END ======   */
